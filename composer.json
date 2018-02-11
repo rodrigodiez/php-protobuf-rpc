@@ -1,0 +1,17 @@
+{
+    "name": "rodrigodiez/php-protobuf-rpc",
+    "description": "Easily create PHP RPC services based on Google Protobuffers and interact with them  over any transport protocol",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rodrigo Díez Villamuera",
+            "email": "rodrigo@rodrigodiez.io"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php" : "^5.5 || ^7.0",
+        "ext-protobuf": "*"
+    }
+}
