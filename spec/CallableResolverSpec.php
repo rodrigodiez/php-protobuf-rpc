@@ -19,19 +19,25 @@ class CallableResolverSpec extends ObjectBehavior
         $this->shouldHaveType(CallableResolver::class);
     }
 
-    function it_returns_a_callable_for_the_provided_service_and_method(ContainerInterface $container, FooService $fooService)
+    function it_returns_a_callable_for_the_provided_service_and_method(ContainerInterface $container)
     {
-        $this->beConstructedWith($container);
-        $container->get('foo.id')->shouldBeCalled()->willReturn($fooService);
+        $container->get('foo.id')->shouldBeCalled()->willReturn(new FooService());
 
         $this->resolve('foo.id', 'method')->shouldBeCallable();
+    }
+
+    function it_throws_InvalidArgumentException_if_method_is_not_callable(ContainerInterface $container)
+    {
+        $container->get('foo.id')->shouldBeCalled()->willReturn(new FooService());
+
+        $this->shouldThrow(\InvalidArgumentException::class)->during('resolve', ['foo.id', 'nonExistantMethod']);
     }
 
     public function getMatchers(): array
     {
         return [
             'beCallable' => function ($subject) {
-                return is_callable($subject) && method_exists($subject[0], $subject[1]);
+                return is_callable($subject);
             }
         ];
     }

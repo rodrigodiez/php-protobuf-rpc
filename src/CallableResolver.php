@@ -15,6 +15,12 @@ class CallableResolver
 
     public function resolve(string $serviceId, string $methodName): callable
     {
+        $callable = [$this->container->get($serviceId), $methodName];
+
+        if(!is_callable($callable)) {
+            throw new \InvalidArgumentException(sprintf("Method '%s' in class '%s' is not callable", $callable[1], get_class($callable[0])));
+        }
+
         return [$this->container->get($serviceId), $methodName];
     }
 }

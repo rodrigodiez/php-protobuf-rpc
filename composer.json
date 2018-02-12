@@ -19,8 +19,8 @@
         "phpspec/phpspec": "^4.3"
     },
     "autoload": {
-        "psr-0": {
-            "": "src"
+        "psr-4": {
+            "RodrigoDiez\\PHPProtobufRPC\\": "src"
         }
     }
 }
