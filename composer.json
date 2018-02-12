@@ -12,6 +12,15 @@
     "minimum-stability": "stable",
     "require": {
         "php" : "^5.5 || ^7.0",
-        "ext-protobuf": "*"
+        "ext-protobuf": "*",
+        "psr/container": "^1.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^4.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        }
     }
 }
