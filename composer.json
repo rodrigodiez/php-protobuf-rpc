@@ -22,5 +22,11 @@
         "psr-4": {
             "RodrigoDiez\\PHPProtobufRPC\\": "src"
         }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "App\\Proto\\Stubs": "proto/stubs",
+            "GPBMetadata": "proto/stubs"
+        }
     }
 }

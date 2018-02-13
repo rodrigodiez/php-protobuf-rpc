@@ -13,14 +13,14 @@ class CallableResolver
         $this->container = $container;
     }
 
-    public function resolve(string $serviceId, string $methodName): callable
+    public function resolve(string $id, string $method): callable
     {
-        $callable = [$this->container->get($serviceId), $methodName];
+        $callable = [$this->container->get($id), $method];
 
         if(!is_callable($callable)) {
-            throw new \InvalidArgumentException(sprintf("Method '%s' in class '%s' is not callable", $callable[1], get_class($callable[0])));
+            throw new \InvalidArgumentException(sprintf('Method "%s" in class "%s" is not callable', $callable[1], get_class($callable[0])));
         }
 
-        return [$this->container->get($serviceId), $methodName];
+        return [$this->container->get($id), $method];
     }
 }
